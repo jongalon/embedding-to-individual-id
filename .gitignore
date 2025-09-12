@@ -1,0 +1,21 @@
+# Ignore specific folders
+.lightning_studio/
+.keras/
+.vscode/
+csv_Stowell/
+data_embeddings/
+data_sample/
+logs/
+logs_FCN_birdnet/
+logs_RNN/
+
+# Ignore specific file types
+*.csv
+*.pth
+*.png
+
+# Ignore specific files
+this_studio.iml
+.cursor-server
+.vscode-server
+.windsurf-server
