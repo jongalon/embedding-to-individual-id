@@ -1,7 +1,7 @@
 # README
 
 ## Project Overview
-Welcome to the `tembedding-to-individual-id` project! This repository is 
+Welcome to the `tembedding-to-individual-id` project! This repository is an Embeddings-based individual identification project (BirdNET, Perch, HawkEars) for birds across multiple datasets. Includes RNN/FC baselines and contrastive pipelines, evaluation scripts, and reproducible benchmarks.
 
 ## Features
 - Modular and scalable architecture.
