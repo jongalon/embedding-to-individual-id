@@ -23,3 +23,7 @@ this_studio.iml
 
 .lesshst
 logs_*/
+
+#Local files
+*RNN_birdnet_greatTit.ipynb
+*RNN_birdnet_greatTit_originalSplit.ipynb
