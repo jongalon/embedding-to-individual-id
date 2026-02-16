@@ -19,3 +19,7 @@ this_studio.iml
 .cursor-server
 .vscode-server
 .windsurf-server
+
+
+.lesshst
+logs_*/
