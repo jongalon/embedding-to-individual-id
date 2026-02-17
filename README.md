@@ -1,7 +1,7 @@
 # README
 
 ## Project Overview
-Welcome to the `tembedding-to-individual-id` project. This repository contains a deep learning pipeline to identify individual birds using embeddings extracted from **BirdNET** and **Google Perch**. It supports training and evaluation of **FCNN** (Fully Connected Neural Networks) and **RNN** (Recurrent Neural Networks) specifically with LSTM.
+Welcome to the `embedding-to-individual-id` project. This repository contains a deep learning pipeline to identify individual birds using embeddings extracted from **BirdNET** and **Google Perch**. It supports training and evaluation of **FCNN** (Fully Connected Neural Networks) and **RNN** (Recurrent Neural Networks), specifically with LSTM.
 
 ## Features
 - **Modular Architecture**: Easy to adapt to new species or embedding types.
