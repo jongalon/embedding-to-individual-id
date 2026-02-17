@@ -16,8 +16,8 @@ Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda
 ### 2. Installation
 Clone the repository and navigate to the project directory:
 ```bash
-git clone [https://github.com/jongalon/embedding-to-individual-id.git](https://github.com/jongalon/embedding-to-individual-id.git)
-cd embedding-to-individual-id
+git clone xxxxx
+cd xxxxx
 ```
 
 ### 3. Environment Setup
