@@ -8,11 +8,13 @@ data_sample/
 logs/
 logs_FCN_birdnet/
 logs_RNN/
-
+Test_Notebooks/
 # Ignore specific file types
 *.csv
 *.pth
 *.png
+*.parquet
+*.xlsx
 
 # Ignore specific files
 this_studio.iml
