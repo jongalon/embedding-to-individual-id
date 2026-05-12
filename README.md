@@ -36,7 +36,7 @@ This repository requires embeddings as input. You can generate them using the [E
 ### 1 Embeddings
 Access the pre-extracted embeddings here:
 
-[Datasets - Zenodo](https://doi.org/10.5281/zenodo.18603176) 
+[Datasets - Zenodo](https://doi.org/10.5281/zenodo.18603175) 
 
 Organization: Place all embeddings inside the Output_files folder in the project root, separating them by window duration (3s or 5s):
 
