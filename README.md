@@ -73,33 +73,40 @@ Output_metadata
 
 
 ### 3. Project Structure & Workflow
-The notebooks are categorized by architecture and dataset:
+The repository uses a small set of general notebooks rather than separate notebooks for each dataset and architecture. The main notebooks are located in the `Notebooks/` directory:
 
-- FCNN Models: Found in Notebooks/. High-performance classification using 1024-D (BirdNET) or 1280-D (Perch) features.
+- `Template_LSTM_birdnet.ipynb`: main notebook for the BirdNET + LSTM experiments. It supports ordered and shuffled embedding sequences through the configuration block.
+- `Template_FCNN_birdnet_and_perch_onset_gap.ipynb`: main notebook for the FCNN baseline experiments. It supports BirdNET and Perch embeddings, as well as onset and global average pooling configurations.
+- `Summary metrics LSTM.ipynb`: notebook for summarizing LSTM results across datasets, splits, seeds, and sequence-order conditions.
+- `Summary metrics onset gap.ipynb`: notebook for summarizing FCNN onset and GAP baseline results.
+- `02_runtime_benchmark_lstm_inference_cpu.ipynb`: notebook for CPU runtime benchmarking of the BirdNET + LSTM inference pipeline.
+- `Per_individual_analysis_kiwi.ipynb`: notebook for per-individual analysis of the great spotted kiwi experiment.
 
-- Pooling Strategies: Notebooks with _pooling in the name. They explore global average or maximum pooling across multiple temporal segments.
-
-- LSTM Models: Specialized notebooks for capturing temporal dependencies within vocalization sequences.
-
-
-
-Study Cases
-Includes experiments for both Across-year and Within-year temporal constraints across all target species.
-
+Study cases include experiments under within-year and across-year temporal settings, depending on the available metadata for each species. Dataset, split type, embedding backbone, pooling strategy, and ordered or shuffled sequence mode are selected inside the corresponding notebook configuration cells.
 
 ## How to Run
-1. Verify Data: Ensure .parquet files and .csv metadata are in their respective Output_ folders.
+1. Verify the data structure. Ensure that the `.parquet` embedding files and `.csv` metadata files are placed in the corresponding `Output_files/` and `Output_metadata/` folders.
 
-2. Select a Model: Open a notebook from the Notebooks/ directory (e.g., Notebooks/chiffchaff_withinyear_LSTM_birdnet.ipynb).
+2. Select the appropriate notebook from the `Notebooks/` directory. For LSTM experiments, open:
 
-Configure Paths: Verify the data paths in the initial cells match your local directory structure.
+```bash
+Notebooks/Template_LSTM_birdnet.ipynb
+```
 
-Train and Evaluate: Execute all cells. The notebooks will output accuracy metrics, loss curves, and confusion matrices for the test split.
+For FCNN onset and GAP baseline experiments with BirdNET or Perch embeddings, open:
+
+```bash
+Notebooks/Template_FCNN_birdnet_and_perch_onset_gap.ipynb
+```
+
+3. Configure the experiment in the initial cells. Set the dataset name, split type, random seed, input paths, output paths, and experiment-specific options, such as ordered or shuffled sequences for the LSTM notebook, or backbone and pooling strategy for the FCNN notebook.
+
+4. Run all cells. The notebooks train the selected model, evaluate it on the test split, and save the resulting metrics and reports in the configured output folders.
 
 ## Model Details
 - Input: BirdNET v2.4 (1024-D) or Google Perch (1280-D) embeddings.
-- FCNN: Dense layers with Dropout and Batch Normalization.
-- RNN: LSTM-based architecture for sequence processing.
+- FCNN: Dense neural network baseline applied to onset embeddings or pooled embedding representations.
+- LSTM: BirdNET-based recurrent architecture for processing sequences of window-level embeddings. The LSTM workflow supports ordered sequences and shuffled-sequence ablations.
 
 Note: This repository focuses on the classification and inference stage. For audio preprocessing and raw embedding extraction, please refer to the Extraction Repository.
 
