@@ -8,7 +8,9 @@ Output_metadata
 │   └── val_metadata.csv
 ├── chiffchaff-fg
 │   ├── chiffchaff-withinyear-fg-trn.csv
-│   └── chiffchaff-withinyear-fg-tst.csv
+│   ├── chiffchaff-withinyear-fg-tst.csv
+│   ├── chiffchaff-acrossyear-fg-trn.csv
+│   └── chiffchaff-acrossyear-fg-tst.csv
 ├── KiwiTrimmed
 │   └── kiwi_metadata.csv
 ├── littleowl-fg
@@ -18,7 +20,9 @@ Output_metadata
 │   └── littlepenguin_metadata_corrected.csv
 ├── pipit-fg
 │   ├── pipit-withinyear-fg-trn.csv
-│   └── pipit-withinyear-fg-tst.csv
+│   ├── pipit-withinyear-fg-tst.csv
+│   ├── pipit-acrossyear-fg-trn.csv
+│   └── pipit-acrossyear-fg-tst.csv
 └── rtbc_metadata
     └── rtbc_metadata.csv
 
