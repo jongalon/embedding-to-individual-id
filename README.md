@@ -1,14 +1,29 @@
 # README
+# Individual Bird Identification by Modeling Temporal Structure in Bioacoustic Embeddings
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18603175.svg)](https://doi.org/10.5281/zenodo.18603175)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20145425.svg)](https://doi.org/10.5281/zenodo.20145425)
 
 ## Project Overview
-Welcome to the `embedding-to-individual-id` project. This repository contains a deep learning pipeline to identify individual birds using embeddings extracted from **BirdNET** and **Google Perch**. It supports training and evaluation of **FCNN** (Fully Connected Neural Networks) and **RNN** (Recurrent Neural Networks), specifically with LSTM.
+
+
+This repository contains the code to reproduce the analyses presented in:
+
+> **Individual Bird Identification by Modeling Temporal Structure in Bioacoustic Embeddings**  
+> Jonathan Gallego, Juan D. Martínez, and José D. López.
+
+This repository implements the downstream classification experiments for closed-set acoustic individual identification using pretrained BirdNET and Google Perch embeddings. It supports training and evaluation of fully connected neural network (FCNN) baselines and long short-term memory (LSTM) models that capture the temporal structure of embedding sequences.
+
+- Embedding extraction repository: [github.com/jongalon/emb_extraction](https://github.com/jongalon/emb_extraction)
+- Code repository: [github.com/jongalon/embedding-to-individual-id](https://github.com/jongalon/embedding-to-individual-id)
+- Data and precomputed embeddings: [Zenodo](https://doi.org/10.5281/zenodo.18603175)
+
+The reproduction package covers 87,865 vocalizations from 352 individuals across seven bird species, including within-year and across-year evaluation settings where available.
 
 ## Features
-- **Modular Architecture**: Easy to adapt to new species or embedding types.
-- **Multi-Model Support**: Compare performance between FCNN and LSTM.
-- **Streamlined Workflow**: From raw embeddings to performance metrics and confusion matrices.
+- **Embedding backbones:** Supports BirdNET and Google Perch embeddings.
+- **Model comparison:** Compares FCNN baselines with BirdNET-based LSTM sequence models.
+- **Temporal ablation:** Evaluates temporally ordered and shuffled embedding sequences.
+- **Reproducible evaluation:** Uses predefined metadata splits and saves metrics, predictions, and confusion matrices.
 
 ## Getting Started
 
@@ -18,8 +33,8 @@ Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda
 ### 2. Installation
 Clone the repository and navigate to the project directory:
 ```bash
-git clone xxxxx
-cd xxxxx
+git clone https://github.com/jongalon/embedding-to-individual-id.git
+cd embedding-to-individual-id
 ```
 
 ### 3. Environment Setup
@@ -31,32 +46,30 @@ Create the environment using the provided YAML file:
 
 
 ## Data & Inputs
-This repository requires embeddings as input. You can generate them using the [Extraction Repository] or download the pre-extracted datasets:
+This repository requires embeddings as input. You can generate them using the [embedding extraction repository](https://github.com/jongalon/emb_extraction) or download the pre-extracted datasets:
 
-### 1 Embeddings
+### 1. Embeddings
 Access the pre-extracted embeddings here:
 
-[Datasets - Zenodo](https://doi.org/10.5281/zenodo.18603175) 
+[Datasets - Zenodo](https://doi.org/10.5281/zenodo.20145425) 
+The Zenodo archive contains the precomputed embeddings, metadata files, predefined train/validation/test splits, and supporting materials required to reproduce the reported experiments.
 
 Organization: Place all embeddings inside the Output_files folder in the project root, separating them by window duration (3s or 5s):
 
 ```
 Output_files/
 ├── Embeddings_from_3sPadding/
-│    ├── <dataset_name>_parquet_parts/    # .parquet files (e.g., littleowl_parquet_parts)
-|    └── ...
+│   ├── <dataset_name>_parquet_parts/    # .parquet files (e.g., littleowl_parquet_parts)
+│   └── ...
 └── Embeddings_from_5sPadding/
-     ├── <dataset_name>_parquet_parts/    # .parquet files (e.g., littleowl_parquet_parts)
-     └── ...
+    ├── <dataset_name>_parquet_parts/    # .parquet files (e.g., littleowl_parquet_parts)
+    └── ...
 ```
 
+
+
 ### 2. Metadata
-Metadata files are not included in this repository. Access them through:
-
-[Metadata - Zenodo](https://doi.org/10.5281/zenodo.18603175)
-
-Paste the files into the `Output_metadata` folder following this structure:
-
+Metadata files are included in the Zenodo archive. Place them in the `Output_metadata/` folder following this structure:
 
 ```
 Output_metadata
@@ -84,6 +97,10 @@ The repository uses a small set of general notebooks rather than separate notebo
 
 Study cases include experiments under within-year and across-year temporal settings, depending on the available metadata for each species. Dataset, split type, embedding backbone, pooling strategy, and ordered or shuffled sequence mode are selected inside the corresponding notebook configuration cells.
 
+## Outputs
+
+Depending on the selected notebook and configuration, the workflow saves trained models, prediction files, classification metrics, confusion matrices, and summary tables in the configured output directories.
+
 ## How to Run
 1. Verify the data structure. Ensure that the `.parquet` embedding files and `.csv` metadata files are placed in the corresponding `Output_files/` and `Output_metadata/` folders.
 
@@ -108,10 +125,11 @@ Notebooks/Template_FCNN_birdnet_and_perch_onset_gap.ipynb
 - FCNN: Dense neural network baseline applied to onset embeddings or pooled embedding representations.
 - LSTM: BirdNET-based recurrent architecture for processing sequences of window-level embeddings. The LSTM workflow supports ordered sequences and shuffled-sequence ablations.
 
-Note: This repository focuses on the classification and inference stage. For audio preprocessing and raw embedding extraction, please refer to the Extraction Repository.
+Note: This repository focuses on the classification and inference stage. For audio preprocessing and raw embedding extraction, please refer to the [embedding extraction repository](https://github.com/jongalon/emb_extraction).
 
-## Contributing
-We welcome contributions! 
+
+## Reproducibility and Contributions
+Please report reproducibility issues through the repository's issue tracker. Contributions are welcome through pull requests that include a clear description of the proposed change.
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
